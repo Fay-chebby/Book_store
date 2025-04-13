@@ -232,3 +232,20 @@ GRANT SELECT ON Bookstore.* TO 'second_user'@'localhost';
 
 -- Apply changes
 FLUSH PRIVILEGES;
+-- data
+SELECT 
+    b.title,
+    SUM(ol.quantity * ol.price) AS total_sales
+FROM order_line ol
+JOIN book b ON ol.book_id = b.book_id
+GROUP BY b.title;
+
+--data
+SELECT * FROM Customer_order;
+-- data
+SELECT 
+    ol.order_id,
+    b.title,
+    ol.quantity
+FROM order_line ol
+JOIN book b ON ol.book_id = b.book_id;
