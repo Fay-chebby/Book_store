@@ -138,3 +138,81 @@ CREATE TABLE Order_history(
     FOREIGN KEY (book_id) REFERENCES book(book_id)
 
 );
+
+
+-- adding data to the tables
+INSERT INTO Order_status (status_name) VALUES 
+('Pending'),
+('Shipped'),
+('Delivered'),
+('Cancelled');
+
+
+INSERT INTO Shipping_method (method_name) VALUES 
+('Standard Shipping'),
+('Express Shipping'),
+('Overnight Shipping');
+
+
+INSERT INTO Address_status (status_name) VALUES 
+('Active'),
+('Inactive'),
+('Deleted');
+
+
+INSERT INTO Book_language (language_name) VALUES 
+('English'),
+('French'),
+('Spanish');
+
+INSERT INTO Publisher (publisher_name) VALUES 
+('Myles'),
+('Pastor Chris'),
+('Gods General');
+
+
+INSERT INTO Country (country_name) VALUES 
+('Bahamas'),
+('Nigeria'),
+('UK');
+
+INSERT INTO Customer (first_name, last_name, email, phone) VALUES 
+('Brian', 'kots', 'brian@gmail.com', '0798456782'),
+('June', 'bett', 'june@gmail.com', '0787654123');
+
+
+INSERT INTO Address (street, country_name, postal_code, country_id) VALUES 
+('123 good Street', 'USA', '10001', 1),
+('456  Avenue', 'Canada', 'M5V 2T6', 2);
+
+INSERT INTO Customer_address (customer_id, address_id) VALUES 
+(1, 1),
+(2, 2);
+
+INSERT INTO Author (author_name, author_info) VALUES 
+('Myles', 'The best of them all'),
+('Pastor Chris', 'British author, best ');
+
+INSERT INTO Book (title, publisher_id, language_id, price) VALUES 
+ ('Daily life', 1, 1, 19.99),
+('Waiting and dating', 2, 1, 29.99);
+
+
+
+INSERT INTO Book_author (book_id, author_id) VALUES 
+(1, 1),
+(2, 2);
+
+
+INSERT INTO Customer_order (customer_id, order_date, shipping_method_id, status_id) VALUES 
+(1, '2025-01-01', 1, 1),
+(2, '2025-01-03', 2, 2);
+
+INSERT INTO Order_history (order_id, status_id, change_date) VALUES 
+(1, 1, '2025-04-01'),
+(1, 2, '2025-04-02'),
+(2, 1, '2025-04-03');
+
+INSERT INTO order_line (order_id, book_id, quantity, price) VALUES 
+(1, 1, 2, 19.99),
+(2, 2, 1, 29.99);
