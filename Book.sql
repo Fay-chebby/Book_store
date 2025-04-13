@@ -216,3 +216,19 @@ INSERT INTO Order_history (order_id, status_id, change_date) VALUES
 INSERT INTO order_line (order_id, book_id, quantity, price) VALUES 
 (1, 1, 2, 19.99),
 (2, 2, 1, 29.99);
+
+
+-- Create an admin user
+ CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'admin_pass';
+GRANT ALL PRIVILEGES ON Bookstore.* TO 'admin_user'@'localhost';
+
+-- Create a manager user
+CREATE USER 'manager_user'@'localhost' IDENTIFIED BY 'manager_pass';
+GRANT SELECT, INSERT, UPDATE, DELETE ON Bookstore.* TO 'manager_user'@'localhost';
+
+-- Create a second  user
+CREATE USER 'second_user'@'localhost' IDENTIFIED BY 'second_user';
+GRANT SELECT ON Bookstore.* TO 'second_user'@'localhost';
+
+-- Apply changes
+FLUSH PRIVILEGES;
